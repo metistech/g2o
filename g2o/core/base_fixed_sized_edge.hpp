@@ -176,20 +176,21 @@ void BaseFixedSizedEdge<D, E, VertexTypes...>::linearizeOplusN() {
           number_t, static_cast<size_t>(VertexXnType<N>::Dimension)> >::type
       FixedArray;
   FixedArray add_vertex(vertexDimension<N>());
-  add_vertex.fill(0.);
+  std::fill(add_vertex.begin(), add_vertex.end(), 0.);
+  // add_vertex.fill(0.);
 
   // estimate the jacobian numerically
   // add small step along the unit vector in each dimension
   for (int d = 0; d < vertexDimension<N>(); ++d) {
     vertex->push();
     add_vertex[d] = delta;
-    vertex->oplus(add_vertex.data());
+    vertex->oplus(add_vertex.begin());
     computeError();
     auto errorBak = this->error();
     vertex->pop();
     vertex->push();
     add_vertex[d] = -delta;
-    vertex->oplus(add_vertex.data());
+    vertex->oplus(add_vertex.begin());
     computeError();
     errorBak -= this->error();
     vertex->pop();

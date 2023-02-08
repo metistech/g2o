@@ -87,17 +87,18 @@ void BaseVariableSizedEdge<D, E>::linearizeOplus() {
     _jacobianOplus[i].resize(_dimension, vi_dim);
     // add small step along the unit vector in each dimension
     ceres::internal::FixedArray<number_t> add_vi(vi_dim);
-    add_vi.fill(0.);
+    // add_vi.fill(0.);
+    std::fill(add_vi.begin(), add_vi.end(), 0.);
     for (int d = 0; d < vi_dim; ++d) {
       vi->push();
       add_vi[d] = delta;
-      vi->oplus(add_vi.data());
+      vi->oplus(add_vi.begin());
       computeError();
       errorBak = _error;
       vi->pop();
       vi->push();
       add_vi[d] = -delta;
-      vi->oplus(add_vi.data());
+      vi->oplus(add_vi.begin());
       computeError();
       errorBak -= _error;
       vi->pop();
