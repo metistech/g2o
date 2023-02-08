@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>g2o</name>
+  <version>1.0.0</version>
+  <description>An open-source C++ framework for optimizing graph-based nonlinear error functions.</description>
+  <author>Rainer Kuemmerle, Giorgio Grisetti, Hauke Strasdat, Kurt Konolige, Wolfram Burgard</author>
+  <maintainer email="kuemmerl@informatik.uni-freiburg.de"></maintainer>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
