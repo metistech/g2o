@@ -546,7 +546,10 @@ if(G2O_BUILD_BENCHMARKS)
 endif()
 
 find_package(catkin)
-catkin_package()
+catkin_package(
+  INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/g2o
+  LIBRARIES g2o_core;g2o_types_slam3d;g2o_types_sba;g2o_types_sim3
+)
 
 # Include the subdirectories
 add_subdirectory(g2o)
