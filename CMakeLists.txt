@@ -549,7 +549,7 @@ find_package(Eigen3 REQUIRED)
 
 find_package(catkin)
 catkin_package(
-  INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/g2o;${EIGEN3_INCLUDE_DIR}
+  INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/covins_deps/g2o;${EIGEN3_INCLUDE_DIR}
   LIBRARIES g2o_core;g2o_types_slam3d;g2o_types_sba;g2o_types_sim3
 )
 
