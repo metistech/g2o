@@ -192,10 +192,10 @@ set(G2O_USE_VENDORED_CERES ON CACHE BOOL "Use vendored Ceres from g2o/EXTERNAL/c
 # granularity and dependency in the types supported.
 
 # 2D types
-set(G2O_BUILD_SLAM2D_TYPES ON CACHE BOOL "Build SLAM2D types")
-set(G2O_BUILD_SLAM2D_ADDON_TYPES ON CACHE BOOL "Build SLAM2D addon types")
-set(G2O_BUILD_DATA_TYPES ON CACHE BOOL "Build SLAM2D data types")
-set(G2O_BUILD_SCLAM2D_TYPES ON CACHE BOOL "Build SCLAM2D types")
+set(G2O_BUILD_SLAM2D_TYPES OFF CACHE BOOL "Build SLAM2D types")
+set(G2O_BUILD_SLAM2D_ADDON_TYPES OFF CACHE BOOL "Build SLAM2D addon types")
+set(G2O_BUILD_DATA_TYPES OFF CACHE BOOL "Build SLAM2D data types")
+set(G2O_BUILD_SCLAM2D_TYPES OFF CACHE BOOL "Build SCLAM2D types")
 
 # Process the arguments. If G2O_BUILD_SLAM2D_TYPES is disabled, forceably
 # disable all types. Otherwise, update messages on the types enabled.
@@ -219,9 +219,9 @@ endif()
 
 # 3D types
 set(G2O_BUILD_SLAM3D_TYPES ON CACHE BOOL "Build SLAM 3D types")
-set(G2O_BUILD_SLAM3D_ADDON_TYPES ON CACHE BOOL "Build SLAM 3D addon types")
+set(G2O_BUILD_SLAM3D_ADDON_TYPES OFF CACHE BOOL "Build SLAM 3D addon types")
 set(G2O_BUILD_SBA_TYPES ON CACHE BOOL "Build SLAM3D SBA types")
-set(G2O_BUILD_ICP_TYPES ON CACHE BOOL "Build SLAM3D ICP types")
+set(G2O_BUILD_ICP_TYPES OFF CACHE BOOL "Build SLAM3D ICP types")
 set(G2O_BUILD_SIM3_TYPES ON CACHE BOOL "Build SLAM3D sim3 types")
 
 # Process the arguments. If G2O_BUILD_SLAM3D_TYPES is disabled, forceably
@@ -266,7 +266,7 @@ else()
 endif()
 
 # shall we build the core apps using the library
-set(G2O_BUILD_APPS ON CACHE BOOL "Build g2o apps")
+set(G2O_BUILD_APPS OFF CACHE BOOL "Build g2o apps")
 if(G2O_BUILD_APPS)
   message(STATUS "Compiling g2o apps")
 endif(G2O_BUILD_APPS)
@@ -276,7 +276,7 @@ CMAKE_DEPENDENT_OPTION(G2O_BUILD_LINKED_APPS "Build apps linked with the librari
   "G2O_BUILD_APPS" OFF)
 
 # shall we build the examples
-set(G2O_BUILD_EXAMPLES ON CACHE BOOL "Build g2o examples")
+set(G2O_BUILD_EXAMPLES OFF CACHE BOOL "Build g2o examples")
 if(G2O_BUILD_EXAMPLES)
   message(STATUS "Compiling g2o examples")
 endif(G2O_BUILD_EXAMPLES)
@@ -544,6 +544,9 @@ if(G2O_BUILD_BENCHMARKS)
     message(WARNING G2O_BUILD_BENCHMARKS was set to true, but the benchmark library cannot be found)
   endif()
 endif()
+
+find_package(catkin)
+catkin_package()
 
 # Include the subdirectories
 add_subdirectory(g2o)
