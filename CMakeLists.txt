@@ -7,7 +7,7 @@ include(CPack)
 include(GNUInstallDirs)
 
 # The library prefix
-set(LIB_PREFIX g2o_)
+set(LIB_PREFIX "")
 
 set(g2o_C_FLAGS)
 set(g2o_CXX_FLAGS)
@@ -550,7 +550,7 @@ find_package(Eigen3 REQUIRED)
 find_package(catkin)
 catkin_package(
   INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/covins_deps/g2o;${EIGEN3_INCLUDE_DIR}
-  LIBRARIES g2o_core;g2o_types_slam3d;g2o_types_sba;g2o_types_sim3
+  LIBRARIES core;types_slam3d;types_sba;types_sim3
 )
 
 # Include the subdirectories
